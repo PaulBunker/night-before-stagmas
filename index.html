@@ -49,7 +49,6 @@
   .effigy { width: min(220px, 55vw); height: auto; max-width: 100%; filter: drop-shadow(0 0 28px rgba(232,116,59,.45)); }
   .effigy .burn { animation: flicker 3.2s ease-in-out infinite; transform-origin: 50% 100%; }
   @keyframes flicker { 0%,100% { opacity: .85; transform: scaleY(1); } 45% { opacity: 1; transform: scaleY(1.06); } 70% { opacity: .9; transform: scaleY(.97); } }
-  .eyebrow { font-family: var(--label); letter-spacing: .22em; color: var(--ash); font-size: .9rem; margin: 0; }
   h1 {
     font-family: var(--display); font-weight: 900;
     font-size: clamp(3rem, 12vw, 6.2rem); line-height: .92; margin: 0;
@@ -71,7 +70,7 @@
     font-family: var(--display); font-weight: 900; color: var(--ember);
     font-size: 2.2em; line-height: 0; vertical-align: -.05em; margin-right: .04em;
   }
-  .rune { text-align: center; color: var(--blood); font-size: 1.1rem; letter-spacing: 1.2em; padding-left: 1.2em; user-select: none; }
+  .knot.small { margin: 0 auto; width: 90px; color: var(--blood); opacity: .9; }
   .quote { color: var(--flame); font-style: italic; }
   .whisper { color: var(--ash); font-style: italic; }
 
@@ -85,7 +84,6 @@
   }
   @keyframes blaze { 0%,100% { text-shadow: 0 0 12px rgba(255,196,107,.6), 0 0 40px rgba(232,116,59,.55), 0 0 80px rgba(142,42,30,.6); } 50% { text-shadow: 0 0 18px rgba(255,196,107,.8), 0 0 56px rgba(232,116,59,.7), 0 0 110px rgba(142,42,30,.75); } }
 
-  footer { margin-top: 4rem; text-align: center; font-family: var(--label); letter-spacing: .2em; font-size: .85rem; color: var(--ash); }
 
   @media (max-width: 480px) {
     body { font-size: 1.05rem; }
@@ -132,9 +130,8 @@
       <path class="burn" d="M40 260 Q50 225 62 240 Q66 205 84 228 Q96 192 104 226 Q118 200 124 232 Q140 214 142 242 Q156 228 162 260 Z" fill="#e8743b" opacity=".9"/>
       <path class="burn" d="M60 260 Q72 238 82 248 Q92 226 102 244 Q114 228 122 248 Q134 236 142 260 Z" fill="#ffc46b"/>
     </svg>
-    <p class="eyebrow">A Poem for the Wicker Man Stag Do</p>
     <h1>The Night Before Stagmas</h1>
-    <p class="dedication">in honour of <b>Hugh Jones</b>, groom &amp; guest of the day</p>
+    <p class="dedication">A poem for <b>Hugh Jones</b>, the Wicker Man stag do</p>
   </header>
 
   <svg class="knot" viewBox="0 0 140 20" aria-hidden="true"><path d="M0 10 H50 M90 10 H140 M58 10 L70 2 L82 10 L70 18 Z M64 10 L70 6 L76 10 L70 14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -159,7 +156,7 @@
       <p>And a Wicker Man towering, twelve feet tall and strong.</p>
     </div>
 
-    <div class="rune" aria-hidden="true">ᚺ ᚢ ᚷ ᚺ</div>
+    <svg class="knot small" viewBox="0 0 140 20" aria-hidden="true"><path d="M0 10 H50 M90 10 H140 M58 10 L70 2 L82 10 L70 18 Z M64 10 L70 6 L76 10 L70 14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
 
     <div class="stanza">
       <p>The lads were all plotting, their grins broad and wide,</p>
@@ -186,7 +183,7 @@
       <p>And tomorrow the island's dark secrets revealed.</p>
     </div>
 
-    <div class="rune" aria-hidden="true">ᛃ ᛟ ᚾ ᛖ ᛋ</div>
+    <svg class="knot small" viewBox="0 0 140 20" aria-hidden="true"><path d="M0 10 H50 M90 10 H140 M58 10 L70 2 L82 10 L70 18 Z M64 10 L70 6 L76 10 L70 14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
 
     <div class="stanza">
       <p>There'd be drinking and singing, debauchery and cheer,</p>
@@ -207,7 +204,7 @@
       <p>As Hugh Jones marched onward towards glorious fame.</p>
     </div>
 
-    <div class="rune" aria-hidden="true">ᛋ ᛏ ᚨ ᚷ</div>
+    <svg class="knot small" viewBox="0 0 140 20" aria-hidden="true"><path d="M0 10 H50 M90 10 H140 M58 10 L70 2 L82 10 L70 18 Z M64 10 L70 6 L76 10 L70 14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
 
     <div class="stanza">
       <p>So sleep well, brave Hugh, while the moon's shining bright,</p>
@@ -225,11 +222,10 @@
       <p>So raise up your glasses, let no man depart,</p>
       <p>For tomorrow we honour our groom with dark art.</p>
       <p>May the ale flow like rivers, may the old gods decree—</p>
-      <p class="cry">Happy Stagmas to Hugh!</p>
+      <p class="cry">HAPPY STAGMAS TO HUGH!</p>
     </div>
   </article>
 
-  <footer>Summerisle Edition · Burn After Reading</footer>
 </main>
 
 <script>
