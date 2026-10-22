@@ -7,7 +7,7 @@
 <title>The Night Before Stagmas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700;900&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Grenze+Gotisch:wght@400;700;900&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
 <style>
   /* Layout: one candlelit column of ballad stanzas under a burning wicker effigy; a single dark folk-horror night, deliberately single-theme. */
   :root {
@@ -19,7 +19,8 @@
     --flame: #ffc46b;
     --blood: #8e2a1e;
     --display: "Grenze Gotisch", "UnifrakturMaguntia", "Old English Text MT", Georgia, serif;
-    --body: "IM Fell English", "Iowan Old Style", Garamond, Georgia, serif;
+    --body: "Cormorant Garamond", "IM Fell English", Garamond, Georgia, serif;
+    --fell: "IM Fell English", "Iowan Old Style", Garamond, Georgia, serif;
     --label: "IM Fell English SC", "IM Fell English", Garamond, Georgia, serif;
     color-scheme: dark;
   }
@@ -31,8 +32,11 @@
       var(--night);
     color: var(--parchment);
     font-family: var(--body);
-    font-size: 1.15rem;
-    line-height: 1.7;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-feature-settings: "liga", "dlig", "onum";
+    -webkit-font-smoothing: antialiased;
     min-height: 100%;
     overflow-x: hidden;
   }
@@ -49,35 +53,49 @@
   .effigy { width: min(220px, 55vw); height: auto; max-width: 100%; filter: drop-shadow(0 0 28px rgba(232,116,59,.45)); }
   .effigy .burn { animation: flicker 3.2s ease-in-out infinite; transform-origin: 50% 100%; }
   @keyframes flicker { 0%,100% { opacity: .85; transform: scaleY(1); } 45% { opacity: 1; transform: scaleY(1.06); } 70% { opacity: .9; transform: scaleY(.97); } }
-  h1 {
-    font-family: var(--display); font-weight: 900;
-    font-size: clamp(3rem, 12vw, 6.2rem); line-height: .92; margin: 0;
-    text-wrap: balance;
-    color: var(--flame);
-    background: linear-gradient(180deg, var(--flame) 15%, var(--ember) 60%, var(--blood) 105%);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 18px rgba(232,116,59,.35));
+  h1 { margin: 0; display: grid; justify-items: center; line-height: .85; }
+  h1 .pre {
+    font-family: var(--label); font-weight: 400; color: var(--parchment);
+    font-size: clamp(1rem, 4.2vw, 1.6rem); letter-spacing: .42em; padding-left: .42em;
+    display: flex; align-items: center; gap: .9em;
   }
-  .dedication { font-style: italic; color: var(--ash); margin: 0; font-size: 1.1rem; }
-  .dedication b { font-style: normal; font-family: var(--label); color: var(--parchment); font-weight: 400; letter-spacing: .06em; }
+  h1 .pre::before, h1 .pre::after { content: ""; width: clamp(1.5rem, 8vw, 4rem); height: 1px; background: linear-gradient(90deg, transparent, var(--ember)); }
+  h1 .pre::after { background: linear-gradient(90deg, var(--ember), transparent); }
+  h1 .big {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(4.6rem, 25vw, 10.5rem); letter-spacing: -.01em;
+    padding: .06em .08em .12em;
+    color: var(--flame);
+    background: linear-gradient(180deg, #fff1cf 0%, var(--flame) 28%, var(--ember) 62%, var(--blood) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 22px rgba(232,116,59,.45)) drop-shadow(0 4px 2px rgba(0,0,0,.6));
+  }
+  .dedication { font-family: var(--fell); font-style: italic; color: var(--ash); margin: .4rem 0 0; font-size: 1.15rem; text-wrap: balance; }
+  .dedication b { font-style: normal; font-family: var(--label); color: var(--parchment); font-weight: 400; letter-spacing: .08em; }
+  .dedication .bl { font-size: 1.25em; }
 
   .knot { display: block; margin: 2.5rem auto; width: 140px; max-width: 60%; color: var(--ember); opacity: .7; }
 
-  .poem { display: grid; gap: 2.2rem; }
-  .stanza { margin: 0; text-align: center; text-wrap: balance; }
-  .stanza p { margin: 0; }
-  .stanza.first p:first-child::first-letter {
+  .poem { display: grid; gap: 2.6rem; }
+  .stanza { margin: 0; text-align: center; }
+  .stanza p { margin: 0; text-wrap: balance; }
+  .stanza p + p { margin-top: .15em; }
+  .stanza p:first-child::first-letter {
     font-family: var(--display); font-weight: 900; color: var(--ember);
-    font-size: 2.2em; line-height: 0; vertical-align: -.05em; margin-right: .04em;
+    font-size: 1.6em; line-height: 0; margin-right: .03em;
+    text-shadow: 0 0 14px rgba(232,116,59,.5);
   }
+  .stanza.first p:first-child::first-letter { font-size: 2.6em; vertical-align: -.08em; }
   .knot.small { margin: 0 auto; width: 90px; color: var(--blood); opacity: .9; }
-  .quote { color: var(--flame); font-style: italic; }
-  .whisper { color: var(--ash); font-style: italic; }
+  .quote { font-family: var(--fell); color: var(--flame); font-style: italic; font-size: .92em; }
+  .whisper { font-family: var(--fell); color: var(--ash); font-style: italic; font-size: .92em; letter-spacing: .04em; }
+  .bl { font-family: var(--display); font-weight: 700; color: var(--flame); font-size: 1.12em; letter-spacing: .01em; line-height: 1; }
+  .sc { font-family: var(--label); color: var(--parchment); letter-spacing: .06em; }
 
   .finale { text-align: center; margin-top: 1rem; }
   .finale .cry {
-    font-family: var(--display); font-weight: 900; text-wrap: balance;
-    font-size: clamp(2.6rem, 11vw, 5rem); line-height: 1; margin-top: 1.2rem;
+    font-family: var(--display); font-weight: 900;
+    display: grid; justify-items: center; line-height: .9; margin-top: 1.6rem;
     color: var(--flame);
     text-shadow: 0 0 12px rgba(255,196,107,.6), 0 0 40px rgba(232,116,59,.55), 0 0 80px rgba(142,42,30,.6);
     animation: blaze 2.6s ease-in-out infinite;
@@ -85,8 +103,16 @@
   @keyframes blaze { 0%,100% { text-shadow: 0 0 12px rgba(255,196,107,.6), 0 0 40px rgba(232,116,59,.55), 0 0 80px rgba(142,42,30,.6); } 50% { text-shadow: 0 0 18px rgba(255,196,107,.8), 0 0 56px rgba(232,116,59,.7), 0 0 110px rgba(142,42,30,.75); } }
 
 
+  .cry .l1 { font-size: clamp(2.8rem, 15vw, 6.4rem); letter-spacing: .02em; }
+  .cry .l2 { font-family: var(--label); font-weight: 400; font-size: clamp(1.1rem, 5vw, 1.8rem); letter-spacing: .5em; padding-left: .5em; color: var(--parchment); text-shadow: none; margin-block: .5em .25em; }
+  .cry .l3 { font-size: clamp(3.6rem, 22vw, 9rem); }
+
   @media (max-width: 480px) {
-    body { font-size: 1.05rem; }
+    body { font-size: 1.16rem; line-height: 1.55; }
+    .wrap { padding-block: 2rem 4rem; }
+    .poem { gap: 2rem; }
+    .effigy { width: min(170px, 48vw); }
+    .knot { margin-block: 1.8rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     .effigy .burn, .finale .cry { animation: none; }
@@ -130,8 +156,8 @@
       <path class="burn" d="M40 260 Q50 225 62 240 Q66 205 84 228 Q96 192 104 226 Q118 200 124 232 Q140 214 142 242 Q156 228 162 260 Z" fill="#e8743b" opacity=".9"/>
       <path class="burn" d="M60 260 Q72 238 82 248 Q92 226 102 244 Q114 228 122 248 Q134 236 142 260 Z" fill="#ffc46b"/>
     </svg>
-    <h1>The Night Before Stagmas</h1>
-    <p class="dedication">A poem for <b>Hugh Jones</b>, the Wicker Man stag do</p>
+    <h1><span class="pre">The Night Before</span><span class="big">Stagmas</span></h1>
+    <p class="dedication">A poem for <b>Hugh Jones</b>, the <span class="bl">Wicker Man</span> stag do</p>
   </header>
 
   <svg class="knot" viewBox="0 0 140 20" aria-hidden="true"><path d="M0 10 H50 M90 10 H140 M58 10 L70 2 L82 10 L70 18 Z M64 10 L70 6 L76 10 L70 14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -141,7 +167,7 @@
       <p>'Twas the night before Stagmas, and all through the land,</p>
       <p>The lads were assembling, with pints close at hand.</p>
       <p>The costumes were ready, the secrets well-kept,</p>
-      <p>While Hugh Jones lay dreaming, quite peacefully slept.</p>
+      <p>While <span class="sc">Hugh Jones</span> lay dreaming, quite peacefully slept.</p>
     </div>
     <div class="stanza">
       <p>For tomorrow was coming, a day of renown,</p>
@@ -153,7 +179,7 @@
       <p>The whispers had started, the rumours had spread,</p>
       <p>Of strange island rituals and things best left unsaid.</p>
       <p>Of bonfires and maypoles, of dancing and song,</p>
-      <p>And a Wicker Man towering, twelve feet tall and strong.</p>
+      <p>And a <span class="bl">Wicker Man</span> towering, twelve feet tall and strong.</p>
     </div>
 
     <svg class="knot small" viewBox="0 0 140 20" aria-hidden="true"><path d="M0 10 H50 M90 10 H140 M58 10 L70 2 L82 10 L70 18 Z M64 10 L70 6 L76 10 L70 14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -177,7 +203,7 @@
       <p>And the locals kept chanting, <span class="whisper">"He'll be ours in a while."</span></p>
     </div>
     <div class="stanza">
-      <p>For Hugh Jones, dear Hugh, was the guest of the day,</p>
+      <p>For <span class="sc">Hugh Jones</span>, dear Hugh, was the guest of the day,</p>
       <p>The groom and the sacrifice — well, so people say.</p>
       <p>His stag crown was waiting, his fate had been sealed,</p>
       <p>And tomorrow the island's dark secrets revealed.</p>
@@ -199,9 +225,9 @@
     </div>
     <div class="stanza">
       <p>Then the drums would beat louder, the night would turn red,</p>
-      <p>And the Wicker Man's shadow would loom overhead.</p>
+      <p>And the <span class="bl">Wicker Man</span>'s shadow would loom overhead.</p>
       <p>The lads would raise tankards and bellow his name,</p>
-      <p>As Hugh Jones marched onward towards glorious fame.</p>
+      <p>As <span class="sc">Hugh Jones</span> marched onward towards glorious fame.</p>
     </div>
 
     <svg class="knot small" viewBox="0 0 140 20" aria-hidden="true"><path d="M0 10 H50 M90 10 H140 M58 10 L70 2 L82 10 L70 18 Z M64 10 L70 6 L76 10 L70 14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -216,13 +242,13 @@
       <p>For the vows may be sacred, the marriage divine,</p>
       <p>But tonight you're the groom of a much stranger kind.</p>
       <p>And when dawn breaks tomorrow, let all understand:</p>
-      <p>Hugh Jones shall be Stagmas King of the Wicker Man!</p>
+      <p><span class="sc">Hugh Jones</span> shall be <span class="bl">Stagmas King</span> of the <span class="bl">Wicker Man</span>!</p>
     </div>
     <div class="stanza finale">
       <p>So raise up your glasses, let no man depart,</p>
       <p>For tomorrow we honour our groom with dark art.</p>
       <p>May the ale flow like rivers, may the old gods decree—</p>
-      <p class="cry">HAPPY STAGMAS TO HUGH!</p>
+      <p class="cry"><span class="l1">HAPPY</span><span class="l1">STAGMAS</span><span class="l2">TO</span><span class="l3">HUGH!</span></p>
     </div>
   </article>
 
